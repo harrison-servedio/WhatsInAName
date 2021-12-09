@@ -14,6 +14,7 @@ class string2:
         self.val = val
         self.uppercase = list(string.ascii_uppercase)
         self.lowercase = list(string.ascii_lowercase)
+        self.valLower = self.MyLower()
     
     def __str__(self):
         return self.val
@@ -101,9 +102,27 @@ class string2:
         for i in temp:
             stringList += i
         return stringList
-                
+    
+    isPalindrome = lambda self : 'Your name is a palindrome.' if self.valLower[::-1] == self.valLower else 'Your name is not a palindrome.'
+    
+    def sortedCharacter(self):
+        temp = list(self.val)
+        result = []
+        result.insert(0, temp[0])
+        temp.pop(0)
+        for i in temp:
+            for j in result:
+                if i == j:
+                    result.insert(result.index(j),i)
+                    break
+                elif i < j:
+                    result.insert(result.index(j), i)
+                    break
+                elif i > result[-1]:
+                    result.insert(len(result), i)
+                    break
+        return result
         
             
-    
 x = string2(input("Test: "))
-print(x.randomName())
+print(x.sortedCharacter())
