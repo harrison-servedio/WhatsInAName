@@ -1,4 +1,14 @@
+'''
+Author: Harrison Servedio
+Bugs:
+    No known
+Features:
+
+'''
+
 import string # Used to get an uppercase and lowercase alphabet
+import random as r
+
 class string2:
     def __init__(self, val):
         self.val = val
@@ -14,6 +24,16 @@ class string2:
             if i in self.uppercase:
                 place = self.uppercase.index(i)
                 temp += self.lowercase[place]
+            else:
+                temp += i
+        return temp
+    
+    def MyUpper(self):
+        temp = ""
+        for i in self.val:
+            if i in self.lowercase:
+                place = self.lowercase.index(i)
+                temp += self.uppercase[place]
             else:
                 temp += i
         return temp
@@ -61,11 +81,29 @@ class string2:
         temp = self.MySplit(' ')
         if len(temp) == 2:
             print(f'Your first name is {temp[0]}.\nYour last name is {temp[1]}.')
-        if len(temp) == 3:
+        elif len(temp) == 3:
             print(f'Your first name is {temp[0]}.\nYour middle name is {temp[1]}.\nYour last name is {temp[2]}.')
-        if len(temp) > 3:
-            print('Here are your names in order')
+        elif len(temp) == 1:
+            print(f'Your first name is {temp[0]}.')
+        elif len(temp) > 3:
+            print('Here are your names in order:')
+            for i in temp:
+                print(i)
+                
+    isHyphen = lambda self : 'There is a hyphen in your name.' if '-' in self.val else 'There is not a hyphen in your name.'
+    
+    def randomName(self):
+        temp = list(self.val)
+        for i in range(r.randint(100, 200)):
+            temp2 = r.randint(0, len(temp)-1)
+            temp.append(temp.pop(temp2))
+        stringList = ''
+        for i in temp:
+            stringList += i
+        return stringList
+                
+        
             
     
 x = string2(input("Test: "))
-x.names()
+print(x.randomName())
