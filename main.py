@@ -4,6 +4,10 @@ Bugs:
     No known
 Features:
 
+Bonues:
+    Sylable Counter
+    Length of String
+    Totals of vowels and consonants
 '''
 
 import string # Used to get an uppercase and lowercase alphabet
@@ -122,7 +126,31 @@ class string2:
                     result.insert(len(result), i)
                     break
         return result
+    
+    def sylables(self):
+        sylableCounter = 0
+        lastLetter = 'asdfeaowiunfd'
+        TwoBackLetter = 'afuweiaoduscvierqw'
+        for letter in self.MyLower():
+            if lastLetter in 'aeiouy':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                continue
+            elif letter == 'e' and TwoBackLetter in 'aiou':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                continue
+            elif letter in 'aeiouy':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                sylableCounter += 1
+                continue
+            else:
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                continue
+        return sylableCounter
         
             
 x = string2(input("Test: "))
-print(x.sortedCharacter())
+print(x.sylables())
