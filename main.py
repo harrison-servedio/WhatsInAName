@@ -1,7 +1,9 @@
 '''
 Author: Harrison Servedio
 Bugs:
-    No known
+    Issues in sylable couting where if two letters back from an e there is a vowel it won't count the e as a syblable:
+        For exaple it would say the name "Oliver" is only 2 sylables
+        
 Features:
 
 Bonues:
@@ -132,11 +134,21 @@ class string2:
         lastLetter = 'asdfeaowiunfd'
         TwoBackLetter = 'afuweiaoduscvierqw'
         for letter in self.MyLower():
-            if lastLetter in 'aeiouy':
+            if letter == 'a' and lastLetter == 'i':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                sylableCounter += 1
+                continue
+            elif letter == 'o' and lastLetter == 'e':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                sylableCounter += 1
+                continue
+            elif lastLetter in 'aeiouy':
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 continue
-            elif letter == 'e' and TwoBackLetter in 'aiou':
+            elif letter == 'e' and TwoBackLetter in 'aeiou':
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 continue
