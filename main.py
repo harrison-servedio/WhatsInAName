@@ -183,7 +183,7 @@ class string2:
         return sylableCounter
     
     def menu(self):
-        print('\nHere you will be able to select a function. The the number that corresponds to the function you want.')
+        print('\nHere you will be able to select a function. Enter the the number that corresponds to the function you want.')
         print('1-Lower')
         print('2-Upper')
         print('3-Syllable Counter')
@@ -195,16 +195,46 @@ class string2:
         print('9-Consonants')
         print('10-Vowels')
         print('11-Length')
-        x - input('12-Reverse')
+        x = input('12-Reverse\n')
         while True:
             try:
                 x = int(x)
+                if x < 1 or x > 12:
+                    raise ValueError
                 break
             except:
-                print('That input is not valid.')
+                print('\nThat input is not valid.')
+                x = input("Please enter a valid input: ")
+        if x == 1:
+            print(f"You name in lowercase is {self.MyLower()}.")
+        elif x == 2:
+            print(f'Your name in uppercase is {self.MyUpper()}.')
+        elif x == 3:
+            print(f"You have {str(self.sylables())} sylables in your name.")
+        elif x == 4:
+            print(f'Here is you name as sorted characters: {self.sortedCharacter()}')
+        elif x == 5:
+            print(f'You name is a palendrome: {self.isPalindrome()}')
+        elif x == 6:
+            print(f'Here is you name as random characters: {self.randomName()}')
+        elif x == 7:
+            print(f'There is a hyphen in your name: {self.isHyphen()}')
+        elif x == 8:
+            print(self.names())
+        elif x == 9:
+            print(self.consonants())
+        elif x == 10:
+            print(self.vowel)
+        elif x == 11:
+            print(f'Your name is {self.length()} characters long')
+        elif x == 12:
+            print(f'Here is your name in reverse: {self.reverse()}')
+        temp = input("Enter 'yes' if you want to try another function. Otherwise, enter anything else. ")
+        if temp == 'yes':
+            self.menu()
+
+
 
 x = string2()
         
-while True:            
-    x = string2(input("Test: "))
-    print(x.sylables())
+x.menu()
