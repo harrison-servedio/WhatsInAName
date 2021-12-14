@@ -16,11 +16,17 @@ import string # Used to get an uppercase and lowercase alphabet
 import random as r
 
 class string2:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self):
+        self.val = self.nameInputValid()
         self.uppercase = list(string.ascii_uppercase)
         self.lowercase = list(string.ascii_lowercase)
         self.valLower = self.MyLower()
+    
+    def nameInputValid(self):
+        print('\n____________________________________________________________________________________________________________________')
+        print('\nWelcome to "What\'s in a Name"!\n')
+        return input('Note: Some of the functions may not work well unless you enter an actual name\nWhat is your name? ')
+        
     
     def __str__(self):
         return self.val
@@ -144,6 +150,11 @@ class string2:
                 lastLetter = letter
                 sylableCounter += 1
                 continue
+            elif letter == 'o' and lastLetter == 'i':
+                TwoBackLetter = lastLetter
+                lastLetter = letter
+                sylableCounter += 1
+                continue
             elif lastLetter in 'aeiouy':
                 TwoBackLetter = lastLetter
                 lastLetter = letter
@@ -162,7 +173,26 @@ class string2:
                 lastLetter = letter
                 continue
         return sylableCounter
-        
-            
-x = string2(input("Test: "))
-print(x.sylables())
+    
+    def menu(self):
+        print('\nHere you will be able to select a function. The the number that corresponds to the function you want.')
+        print('1-Lower')
+        print('2-Upper')
+        print('3-Syllable Counter')
+        print('4-Sorted Characters')
+        print('5-Palendrome Check')
+        print('6-Randomise Characters')
+        print('7-Hyphen Check')
+        print('8-Names')
+        print('9-Consonants')
+        print('10-Vowels')
+        print('11-Length')
+        x - input('12-Reverse')
+        while True:
+            try:
+                x = int(x)
+                break
+            except:
+                print('That input is not valid.')
+
+x = string2()
