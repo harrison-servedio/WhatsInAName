@@ -135,54 +135,42 @@ class string2:
     
     def sylables(self):
         sylableCounter = 0
-        lastLetter = 'asdfeaowiunfd'
+        # Both of the next variables cant be empty otherwise it would messes up the function
+        lastLetter = 'asdfeaowiunfd'            
         TwoBackLetter = 'afuweiaoduscvierqw'
+        vowelCombonations = (('i', 'a'), ('e', 'o'), ('i', 'o'), ('i', 'e'), ('u', 'a'))# This is a list with all the two vowel combonations that make 2 sylables
         for letter in self.MyLower():
-            if letter == 'a' and lastLetter == 'i':
+            '''
+            This next block of code uses vowels to find the amount of sylables in a word
+            Any time two vowels come in a row it is treated as 1 sylable unless the combonation is in the list above
+            '''
+            if (lastLetter, letter) in vowelCombonations:                               # Checks if the vowel combonation is in the list
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 sylableCounter += 1
                 continue
-            elif letter == 'o' and lastLetter == 'e':
-                TwoBackLetter = lastLetter
-                lastLetter = letter
-                sylableCounter += 1
-                continue
-            elif letter == 'o' and lastLetter == 'i':
-                TwoBackLetter = lastLetter
-                lastLetter = letter
-                sylableCounter += 1
-                continue
-            elif letter == 'e' and lastLetter == 'i':
-                TwoBackLetter = lastLetter
-                lastLetter = letter
-                sylableCounter += 1
-                continue
-            elif letter == 'a' and lastLetter == 'u':
-                TwoBackLetter = lastLetter
-                lastLetter = letter
-                sylableCounter += 1
-                continue
-            elif lastLetter in 'aeiouy':
+            elif lastLetter in 'aeiouy':                                                # If the previous letter is a vowels than the program does not count the second vowel as a sylable unless the combonation is in the list
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 continue
+            # This elif statement checks if the letter two behind an e is a vowel because if it is a vowels than the e is note counted as a sylable
             elif (letter == 'e' == self.MyLower()[-1] and TwoBackLetter in 'aeiou'):
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 continue
-            elif letter in 'aeiouy':
+            elif letter in 'aeiouy':                                                    # If not of the previouse statements have run and the current letter is a vowels, the program assumes the vowel is it's own sylable
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 sylableCounter += 1
                 continue
-            else:
+            else:                                                                       # This else statement catches all consonants
                 TwoBackLetter = lastLetter
                 lastLetter = letter
                 continue
-        return sylableCounter
-    
+        return sylableCounter                                                           # Returns the number of sylables as an integer
+    # This code lets the user run any of the functions
     def menu(self):
+        # This code displays all the options for the user to select
         print('\nHere you will be able to select a function. Enter the the number that corresponds to the function you want.')
         print('1-Lower')
         print('2-Upper')
@@ -196,15 +184,22 @@ class string2:
         print('10-Vowels')
         print('11-Length')
         x = input('12-Reverse\n')
+        '''
+        This block of code does the input validation
+        '''
         while True:
             try:
-                x = int(x)
+                x = int(x)                                                              # Tries to convert the user input to an integer to make sure the input is correct
                 if x < 1 or x > 12:
-                    raise ValueError
-                break
-            except:
+                    raise ValueError                                                    # Raises an error if the number is too small or too great
+                break                                                                   # Breaks the loop if everything runs correctly
+            except:                                                                     # Repeats asking for input if the input is not correct
                 print('\nThat input is not valid.')
                 x = input("Please enter a valid input: ")
+        '''
+        This next block of code check what the input is and runs the correct function
+        It is not the best way to do it but it works
+        '''
         if x == 1:
             print(f"You name in lowercase is {self.MyLower()}.")
         elif x == 2:
@@ -229,12 +224,12 @@ class string2:
             print(f'Your name is {self.length()} characters long')
         elif x == 12:
             print(f'Here is your name in reverse: {self.reverse()}')
-        temp = input("Enter 'yes' if you want to try another function. Otherwise, enter anything else. ")
+        temp = input("Enter 'yes' if you want to try another function. Otherwise, enter anything else. ") # Makes the instuctions clear so the user know what will happen if you don't enter 'Yes'
         if temp == 'yes':
-            self.menu()
+            self.menu()                                                                 # Runs the menu function again if the user enter 'Yes'
 
 
 
-x = string2()
+x = string2()                                                                           # Creates an instance of the string2 class
         
-x.menu()
+x.menu()                                                                                # Runs the menu function so the user can run functions
