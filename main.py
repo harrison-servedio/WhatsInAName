@@ -212,11 +212,11 @@ class string2:
         elif x == 4:
             print(f'Here is you name as sorted characters: {self.sortedCharacter()}')
         elif x == 5:
-            print(f'You name is a palendrome: {self.isPalindrome()}')
+            print(self.isPalindrome())
         elif x == 6:
             print(f'Here is you name as random characters: {self.randomName()}')
         elif x == 7:
-            print(f'There is a hyphen in your name: {self.isHyphen()}')
+            print(f'{self.isHyphen()}')
         elif x == 8:
             print(self.names())
         elif x == 9:
