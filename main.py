@@ -13,6 +13,11 @@ Bonues:
 import string # Used to get an uppercase and lowercase alphabet
 import random as r
 
+'''
+The class string2 has many of the functions that the original string class and some others
+This class is used to make running some of the functions easier
+Some of the functions of this class return a statement which should be printed and others just return a value
+'''
 class string2:
     def __init__(self):
         self.val = self.nameInputValid()
@@ -56,20 +61,18 @@ class string2:
     def vowel(self):
         letters = 'aeiou'
         frequency = [0, 0, 0, 0, 0]
-        for i in self.val:
-            i = string2(i)
-            if i.MyLower() in letters:
-                frequency.insert(letters.index(i.MyLower()), frequency[letters.index(i.MyLower())] + 1) 
+        for i in self.MyLower():
+            if i in letters:
+                frequency[letters.index(i)] += 1
             
         return f'There are {frequency[0]} a(s) \nThere are {frequency[1]} e(s) \nThere are {frequency[2]} i(s) \nThere are {frequency[3]} o(s) \nThere are {frequency[4]} u(s)\n'
             
     def consonants(self):
         letters = 'bcdfghjklmnpqrstvwxyz'
         frequency = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        for i in self.val:
-            i = string2(i)
-            if i.MyLower() in letters:
-                frequency.insert(letters.index(i.MyLower()), frequency[letters.index(i.MyLower())] + 1) 
+        for i in self.MyLower():
+            if i in letters:
+                frequency[letters.index(i)] += 1
         ret = ''
         for i in letters:
             ret += f"There are {frequency[letters.index(i)]} {i}(s) \n"
@@ -219,7 +222,7 @@ class string2:
         elif x == 9:
             print(self.consonants())
         elif x == 10:
-            print(self.vowel)
+            print(self.vowel())
         elif x == 11:
             print(f'Your name is {self.length()} characters long')
         elif x == 12:
@@ -231,5 +234,4 @@ class string2:
 
 
 x = string2()                                                                           # Creates an instance of the string2 class
-        
 x.menu()                                                                                # Runs the menu function so the user can run functions
