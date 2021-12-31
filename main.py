@@ -20,12 +20,12 @@ Some of the functions of this class return a statement which should be printed a
 '''
 class string2:
     def __init__(self):
-        self.val = self.nameInputValid()
+        self.val = self.name()
         self.uppercase = list(string.ascii_uppercase)
         self.lowercase = list(string.ascii_lowercase)
         self.valLower = self.MyLower()
     
-    def nameInputValid(self):
+    def name(self):
         print('\n____________________________________________________________________________________________________________________')
         print('\nWelcome to "What\'s in a Name"!\n')
         return input('Note: Some of the functions may not work well unless you enter an actual name\nWhat is your name? ')
@@ -78,53 +78,56 @@ class string2:
             ret += f"There are {frequency[letters.index(i)]} {i}(s) \n"
         return ret
     
-    def MySplit(self, x):
-        temp = []
-        temp2 = ''
+    def MySplit(self, x):                                                               # This function splits strings at a specific character. In this case that character is represented with the variable 'x'
+        temp = []                                                                       # This variable stores the output
+        temp2 = ''                                                                      # This varible is added on too in the for loop until the for loop detects the x 
         for i in self.val:
-            if i == x:
+            if i == x:                                                                  # If the i is the x, temp gets another value and temp2 is reset
                 temp.append(temp2)
                 temp2 = ''
             else:
-                temp2 += i
-        if self.val[-1] != x:
+                temp2 += i                                                              # When the i is not x temp2 grows
+        if self.val[-1] != x:                                                           # This piece of code make sure that there is not a problem when the variable does not end in x
             temp.append(temp2)
         return temp
     
-    def names(self):
-        temp = self.MySplit(' ')
-        if len(temp) == 2:
+    def names(self):                                                                    # This function separates peoples first middle and last name
+        temp = self.MySplit(' ')                                                        # Their name is split by spaces
+        if len(temp) == 2:                                                              # This code is run if they only entered two names(first and last)
             print(f'Your first name is {temp[0]}.\nYour last name is {temp[1]}.')
-        elif len(temp) == 3:
+        elif len(temp) == 3:                                                            # This code is run if they entered 3 names(first, middle, last)
             print(f'Your first name is {temp[0]}.\nYour middle name is {temp[1]}.\nYour last name is {temp[2]}.')
-        elif len(temp) == 1:
+        elif len(temp) == 1:                                                            # This code accounts for the user only entering first names
             print(f'Your first name is {temp[0]}.')
-        elif len(temp) > 3:
+        elif len(temp) > 3:                                                             # This code runs if they entered more than 3 and just lists off the names
             print('Here are your names in order:')
             for i in temp:
                 print(i)
-                
+
+    # This function checks if there is a hyphem in a name with and if statement and returns one of two strings based on the result           
     isHyphen = lambda self : 'There is a hyphen in your name.' if '-' in self.val else 'There is not a hyphen in your name.'
-    
-    def randomName(self):
-        temp = list(self.val)
-        for i in range(r.randint(100, 200)):
-            temp2 = r.randint(0, len(temp)-1)
-            temp.append(temp.pop(temp2))
+
+    def randomName(self):                                                               # This function randomly scrambles characters in a name
+        temp = list(self.val)                                                           # First the name is converted to a list
+        for i in range(r.randint(100, 200)):                                            # The for loop is used to run the next two lines a random amount of times
+            temp2 = r.randint(0, len(temp)-1)                                           # Picks a random list index 
+            temp.append(temp.pop(temp2))                                                # Moves that list index to the end of the list
+        # The next four lines convert the list back into a string and return the output
         stringList = ''
         for i in temp:
             stringList += i
         return stringList
     
+    # This next line uses string indexing to reveres a string and it compares the reversed string the original. It them returns the correct output
     isPalindrome = lambda self : 'Your name is a palindrome.' if self.valLower[::-1] == self.valLower else 'Your name is not a palindrome.'
     
-    def sortedCharacter(self):
-        temp = list(self.val)
-        result = []
-        result.insert(0, temp[0])
+    def sortedCharacter(self):                                                          # This function sorts the characters as a list
+        temp = list(self.val)                                                           # First the string is converted to a list
+        result = []                                                                     # A blank list that will stores the results
+        result.insert(0, temp[0])                                                       # This line and the next moves the first character from the temp list into the results list so the is a starting point for the code
         temp.pop(0)
-        for i in temp:
-            for j in result:
+        for i in temp:                                                                  # Iterates through all the letters in temp
+            for j in result:                                                            # Iterates through all the letters in the results list, comparing the value of the letters to the temp list and inserting the letters in the correct position
                 if i == j:
                     result.insert(result.index(j),i)
                     break
@@ -137,10 +140,10 @@ class string2:
         return result
     
     def sylables(self):
-        sylableCounter = 0
-        # Both of the next variables cant be empty otherwise it would messes up the function
-        lastLetter = 'asdfeaowiunfd'            
-        TwoBackLetter = 'afuweiaoduscvierqw'
+        sylableCounter = 0                                                              # A integer that stores the number of characters
+        # Both of the next variables can't be empty otherwise it would messes up the functions so I set them to a random string
+        lastLetter = 'asdfeaowiunfd'                                                    # When iterating through the letter this value will represent previous letter
+        TwoBackLetter = 'afuweiaoduscvierqw'                                            # When iterating through the letter this value will represent the letter two back from the current one
         vowelCombonations = (('i', 'a'), ('e', 'o'), ('i', 'o'), ('i', 'e'), ('u', 'a'))# This is a list with all the two vowel combonations that make 2 sylables
         for letter in self.MyLower():
             '''
