@@ -218,7 +218,7 @@ class string2:
         elif x == 7:
             print(f'{self.isHyphen()}')
         elif x == 8:
-            print(self.names())
+            self.names()
         elif x == 9:
             print(self.consonants())
         elif x == 10:
@@ -227,7 +227,7 @@ class string2:
             print(f'Your name is {self.length()} characters long')
         elif x == 12:
             print(f'Here is your name in reverse: {self.reverse()}')
-        temp = input("Enter 'yes' if you want to try another function. Otherwise, enter anything else. ") # Makes the instuctions clear so the user know what will happen if you don't enter 'Yes'
+        temp = input("Enter 'yes' if you want to try another function. Otherwise, enter anything else to quit. ") # Makes the instuctions clear so the user know what will happen if they don't enter 'yes'
         if temp == 'yes':
             self.menu()                                                                 # Runs the menu function again if the user enter 'Yes'
 
