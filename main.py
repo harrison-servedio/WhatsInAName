@@ -20,21 +20,33 @@ Some of the functions of this class return a statement which should be printed a
 '''
 class string2:
     def __init__(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Does not return anything
+        # initializes all the variables
         self.val = self.name()
         self.uppercase = list(string.ascii_uppercase)
         self.lowercase = list(string.ascii_lowercase)
         self.valLower = self.MyLower()
     
     def name(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the persons name
+        # This function introduces the user to the program and asked for their name
         print('\n____________________________________________________________________________________________________________________')
         print('\nWelcome to "What\'s in a Name"!\n')
         return input('Note: Some of the functions may not work well unless you enter an actual name\nWhat is your name? ')
         
     
     def __str__(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the name
+        # This function makes it possible to print the class as the important values which is the name
         return self.val
     
     def MyLower(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the string in lowercase
+        # Iterates through the characters and puts them in lower case
         temp = ""
         for i in self.val:
             if i in self.uppercase:
@@ -45,6 +57,9 @@ class string2:
         return temp
     
     def MyUpper(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the string in upper case
+        # iterates the the chracters and capitolised the characters
         temp = ""
         for i in self.val:
             if i in self.lowercase:
@@ -55,10 +70,19 @@ class string2:
         return temp
     
     reverse = lambda self : self.val[::-1]
-    
+    # Takes the class which contains the name and the functions require to modify the string
+    # Returns the reversed string
+    # Reverses the string by use interesting string indexing
+
     length = lambda self: self.val.rindex(self.val[-1])+1
+    # Takes the class which contains the name and the functions require to modify the string
+    # Returns the length of the string
+    # Find the length of a string by finding the index position of the last letter and adding one
     
     def vowel(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the number of vowels in a name as printable string
+        # Iterates through the vowels and checks if the chracters are vowels and counts the vowels
         letters = 'aeiou'
         frequency = [0, 0, 0, 0, 0]
         for i in self.MyLower():
@@ -68,6 +92,9 @@ class string2:
         return f'There are {frequency[0]} a(s) \nThere are {frequency[1]} e(s) \nThere are {frequency[2]} i(s) \nThere are {frequency[3]} o(s) \nThere are {frequency[4]} u(s)\n'
             
     def consonants(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the number of consonants in a name as a printable string
+        # Iterates through the characters and checks if the chracters are consonants and counts the consonants
         letters = 'bcdfghjklmnpqrstvwxyz'
         frequency = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for i in self.MyLower():
@@ -78,7 +105,11 @@ class string2:
             ret += f"There are {frequency[letters.index(i)]} {i}(s) \n"
         return ret
     
-    def MySplit(self, x):                                                               # This function splits strings at a specific character. In this case that character is represented with the variable 'x'
+    def MySplit(self, x):
+        # Takes the class which contains the name and the functions require to modify the string
+        # The character that the string is split at
+        # The string that is split into a list
+        # Splits the string into a list at the character represented by the variable x
         temp = []                                                                       # This variable stores the output
         temp2 = ''                                                                      # This varible is added on too in the for loop until the for loop detects the x 
         for i in self.val:
@@ -91,7 +122,10 @@ class string2:
             temp.append(temp2)
         return temp
     
-    def names(self):                                                                    # This function separates peoples first middle and last name
+    def names(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the fisrt middle and last name split up
+        # Finds the first middle and last names by spliting the name at the space character
         temp = self.MySplit(' ')                                                        # Their name is split by spaces
         if len(temp) == 2:                                                              # This code is run if they only entered two names(first and last)
             print(f'Your first name is {temp[0]}.\nYour last name is {temp[1]}.')
@@ -106,8 +140,14 @@ class string2:
 
     # This function checks if there is a hyphem in a name with and if statement and returns one of two strings based on the result           
     isHyphen = lambda self : 'There is a hyphen in your name.' if '-' in self.val else 'There is not a hyphen in your name.'
+    # Takes the class which contains the name and the functions require to modify the string
+    # Returns if there is a hyphen in your name
+    # Checks if there is a hyphen in the name and returns the output as txt
 
-    def randomName(self):                                                               # This function randomly scrambles characters in a name
+    def randomName(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # returns a the character in the name randomised
+        # Randomises the chracters in a name and returns the output
         temp = list(self.val)                                                           # First the name is converted to a list
         for i in range(r.randint(100, 200)):                                            # The for loop is used to run the next two lines a random amount of times
             temp2 = r.randint(0, len(temp)-1)                                           # Picks a random list index 
@@ -118,10 +158,17 @@ class string2:
             stringList += i
         return stringList
     
-    # This next line uses string indexing to reveres a string and it compares the reversed string the original. It them returns the correct output
-    isPalindrome = lambda self : 'Your name is a palindrome.' if self.valLower[::-1] == self.valLower else 'Your name is not a palindrome.'
     
-    def sortedCharacter(self):                                                          # This function sorts the characters as a list
+    isPalindrome = lambda self : 'Your name is a palindrome.' if self.valLower[::-1] == self.valLower else 'Your name is not a palindrome.'
+    # Takes the class which contains the name and the functions require to modify the string
+    # Returns if the name is a palendrome 
+    # Checks if the name is a palendrome by checking if the reverse vertion of a name is equal to the name
+    
+    
+    def sortedCharacter(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns a list of the sorted characters
+        # Sorts the character in the name
         temp = list(self.val)                                                           # First the string is converted to a list
         result = []                                                                     # A blank list that will stores the results
         result.insert(0, temp[0])                                                       # This line and the next moves the first character from the temp list into the results list so the is a starting point for the code
@@ -138,8 +185,12 @@ class string2:
                     result.insert(len(result), i)
                     break
         return result
-    
+
+
     def sylables(self):
+        # Takes the class which contains the name and the functions require to modify the string
+        # Returns the number of sylables
+        # By using a combonation of looking for vowels and combonations of letters it produces a estimation of the number of sylables
         sylableCounter = 0                                                              # A integer that stores the number of characters
         # Both of the next variables can't be empty otherwise it would messes up the functions so I set them to a random string
         lastLetter = 'asdfeaowiunfd'                                                    # When iterating through the letter this value will represent previous letter
@@ -174,21 +225,17 @@ class string2:
                 lastLetter = letter
                 continue
         return sylableCounter                                                           # Returns the number of sylables as an integer
-    # This code lets the user run any of the functions
+    
+
     def menu(self):
+        # Takes class for information about the name
+        # does not return anything but managed user input
+        # manages the functions and runs them based on user input
         # This code displays all the options for the user to select
         print('\nHere you will be able to select a function. Enter the the number that corresponds to the function you want.')
-        print('1-Lower')
-        print('2-Upper')
-        print('3-Syllable Counter')
-        print('4-Sorted Characters')
-        print('5-Palendrome Check')
-        print('6-Randomise Characters')
-        print('7-Hyphen Check')
-        print('8-Names')
-        print('9-Consonants')
-        print('10-Vowels')
-        print('11-Length')
+        f = open('funcs.txt')
+        text = f.read()
+        print(text)
         x = input('12-Reverse\n')
         '''
         This block of code does the input validation
