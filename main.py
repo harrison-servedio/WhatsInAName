@@ -234,8 +234,9 @@ class string2:
         # This code displays all the options for the user to select
         print('\nHere you will be able to select a function. Enter the the number that corresponds to the function you want.')
         f = open('funcs.txt')
-        text = f.read()
-        print(text)
+        text = f.read().split('/')
+        for i in text:
+            print(i)
         x = input('12-Reverse\n')
         '''
         This block of code does the input validation
